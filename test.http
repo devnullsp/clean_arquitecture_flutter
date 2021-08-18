@@ -1,0 +1,32 @@
+### 
+# @name login
+POST https://strapi.devnullsp.com/auth/local
+Content-Type: application/json
+
+{ 
+"identifier": "usuario1@usuarios.com",
+"password": "usuario1"
+}
+
+###
+GET https://strapi.devnullsp.com/chequeos
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.jwt}}
+
+
+###
+POST https://strapi.devnullsp.com/chequeos
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.jwt}}
+
+{
+    "nombre": "manolo",
+    "destino": "una ciudad",
+    "localizacion": {"x":12,"y":20},
+    "idUsuario": 1
+}
+
+###
+GET https://strapi.devnullsp.com/chequeos/1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.jwt}}
